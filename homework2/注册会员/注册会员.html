@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册会员</title>
+    <link rel="stylesheet" href="注册会员.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="title">
+            <p style="color: rgb(20, 71, 212);">欢迎注册会员</p>
+        </div>
+        <div>
+            <form action="receive.html" method="get">
+                <label for="telephone"><b>手机号码：</b></label>
+                <input name="telephone" class="input" id="telephone" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                    onafterpaste="this.value=this.value.replace(/\D/g,'')" minlength="11" maxlength="11"
+                    placeholder="11位手机号码">
+                <span style="color: red;">必填</span>
+        </div>
+
+        <div>
+            <label for="pwd"><b>创建密码：</b></label>
+            <input type="password" class="input" name="pwd" id="pwd" minlength="8" placeholder="最少8位密码">
+            <span style="color: red;">必填</span>
+        </div>
+
+        <div>
+            <label for="Email"><b>注册邮箱：</b></label>
+            <input type="email" class="input" name="Email" id="Email" placeholder="例如wustzz@sina.com">
+            <span style="color: red;">必填</span>
+        </div>
+
+        <div>
+            <label for="code"><b style="margin-left: 1rem;">验证码：</b></label>
+            <input type="text" class="input" id="code">
+            <span id="capcha">4位验证码</span>
+        </div>
+
+        <div>
+            <b class="ml2r">性别：</b>
+            <label><input type="radio" name="Sex" id="Sex"> 男</label>&nbsp;&nbsp;
+            <label><input type="radio" name="Sex" id="Sex"> 女</label>
+        </div>
+
+        <div class="meeting">
+            <label for="meeting"><b class="ml2r">生日：</b></label>
+            <input type="date" class="input" name="meeting" id="meeting">
+        </div>
+
+        <div>
+            <label for="age"><b class="ml2r">年龄：</b></label>
+            <input type="text" class="input" name="age" id="age" onkeyup="this.value=this.value.replace(/\D/g,'')" />
+        </div>
+
+        <div>
+            <b class="ml2r">籍贯：</b>
+            <select name="province" id="province">
+                <option value="0" selected="selected">湖北省</option>
+            </select>
+            <select name="city" id="city">
+                <option selected="selected">武汉市</option>
+                <option>黄石市</option>
+                <option>襄阳市</option>
+                <option>荆州市</option>
+                <option>宜昌市</option>
+                <option>十堰市</option>
+                <option>孝感市</option>
+                <option>荆门市</option>
+                <option>鄂州市</option>
+                <option>黄冈市</option>
+                <option>咸宁市</option>
+                <option>随州市</option>
+                <option>恩施土家族苗族自治州</option>
+            </select>
+        </div>
+
+        <div>
+            <b class="ml2r">学历：</b>
+            <select name="education" id="education">
+                <option value="0">小学</option>
+                <option value="1">初中</option>
+                <option value="2">高中</option>
+                <option value="3">大专</option>
+                <option value="4" selected="selected">本科</option>
+                <option value="5">研究生</option>
+            </select><br>
+        </div>
+
+        <div>
+            <b class="ml2r">月薪：</b>
+            <input type="range" id="salary" name="salary" min="0" max="20000" step="1" value="10000">
+            <span id="msg"></span>
+        </div>
+
+        <div>
+            <b>个人爱好：</b>
+            <label><input type="checkbox" name="Hobby" id="Hobby"> 唱</label>
+            <label><input type="checkbox" name="Hobby" id="Hobby" style="margin-left: 0.5rem;"> 跳</label>
+            <label><input type="checkbox" name="Hobby" id="Hobby" style="margin-left: 0.5rem;"> rap</label>
+            <label><input type="checkbox" name="Hobby" id="Hobby" style="margin-left: 0.5rem;"> 篮球</label>
+        </div>
+
+        <div><b>个人照片：</b>
+            <input type="file" id="test-image-file" name="test">
+            <div id="test-image-preview"
+                style="border: 1px solid black;border-radius: 10px; width:12.5rem; height: 12.5rem; background-repeat: no-repeat; background-position: center; margin: 0.5rem 5rem">
+            </div>
+        </div>
+
+        <div>
+            <label for="resume"><b style="line-height: 10rem;">个人简历：</b></label>
+            <textarea name="resume" id="resume"></textarea><br>
+        </div>
+
+        <div>
+            <input type="submit" value="提交" onclick="Submit() ">
+            <input type="reset" value="重填">
+        </div>
+
+        </form>
+    </div>
+    <script src="注册会员.js"></script>
+</body>
+
+</html>

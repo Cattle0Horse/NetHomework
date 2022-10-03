@@ -1,0 +1,233 @@
+:root {
+  /*优先级比html高之外，与html选择器相同*/
+  --primary-color: #31c27c;
+  /*使用--声明变量->使用var()读取变量*/
+}
+
+/*html主体*/
+body {
+  margin: 0;
+  background: #f5f5f5;
+  font-family: Microsoft Yahei;
+  font-size: 14px;
+  /* min-width: 1000px; */
+}
+
+/*超链接标签*/
+a {
+  /*去除超链接标签的下划线*/
+  text-decoration: none;
+  color: #000;
+}
+
+/*页首*/
+header {
+  height: 90px;
+  background: white;
+  /*felx弹性盒子*/
+  display: flex;
+  /*垂直居中对齐*/
+  align-items: center;
+}
+
+/*页首及主体部分的内外边距*/
+.header-inner,
+main {
+  /* width: 1200px; */
+  padding: 20px;
+  margin: auto;
+}
+
+/*类别列表*/
+.tag-list {
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+
+/*类别列表的选项*/
+.tag-item {
+  /*内联块级盒子->将选项以行内的块的形式排列*/
+  display: inline-block;
+  /*上下0内边距 左右8px内边距*/
+  padding: 0 8px;
+  margin-right: 24px;
+  line-height: 26px;
+  color: #000;
+  /*去除列表前黑点*/
+  text-decoration: none;
+
+}
+
+/*初始默认选择的列表*/
+.tag-active {
+  /*var()读取颜色变量*/
+  background: var(--primary-color);
+  color: white;
+}
+
+/*当鼠标触碰非当前选择的列表时，改变字体颜色*/
+.tag-item:not(.tag-active):hover {
+  color: var(--primary-color);
+}
+
+/*图片下方部分*/
+.nowrap {
+  /*强制同一行内显示所有文本文字->不换行*/
+  white-space: nowrap;
+  /*溢出隐藏*/
+  overflow: hidden;
+  /*若有文字溢出则显示省略号，如果去除下行，则溢出文字会被裁减->文字缺省*/
+  text-overflow: ellipsis;
+}
+
+/*播放列表*/
+.playlist {
+  /*grid网格布局*/
+  display: grid;
+  /*自动填充满宽度的列个数，且列宽度最小为200px，最大宽度为自适应的一列宽度
+  简单来说就是自动改变列宽度及列个数->横向填满*/
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /*行距45px，列距15px*/
+  gap: 45px 15px;
+  margin-bottom: 45px;
+}
+
+/*图片部分*/
+.cover-wrap {
+  /*flex弹性布局*/
+  display: flex;
+  /*相对定位,若不写->会导致下方的cover-mask指向html/画布
+  若写绝对定位->原图片大小*/
+  position: relative;
+  /*隐藏触碰放大图片后溢出部分*/
+  overflow: hidden;
+  /*宽度占满一行*/
+  width: 100%;
+  margin-bottom: 15px;
+  /*垂直居中*/
+  align-items: center;
+  /* 水平居中 */
+  justify-content: center;
+  /*超链接式小爪爪，这里可以去除*/
+  cursor: pointer;
+}
+
+/* 音乐封面 */
+.cover-img {
+  /* 占满整行 */
+  width: 100%;
+  /* 
+  音乐封面的过渡放大动画，四个方向，0.75秒
+  注意：如果写在hover类里，会导致只有鼠标触碰时有动画，没有收回动画
+  */
+  transition: all 0.75s;
+}
+
+/* 遮罩效果 */
+.cover-mask {
+  /* 相对于cover-wrap */
+  position: absolute;
+  /* 左上右下的距离，即占满父容器*/
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  /* 鼠标未触碰图片时不透光为0 -> 透明 */
+  opacity: 0;
+  /* 同cover-img */
+  transition: all 0.5s;
+}
+
+/* 播放按钮 */
+.cover-play {
+  /* 相对于cover-wrap */
+  position: absolute;
+  /* 居中，自认为以下四行可以用align-content: center代替 */
+  left: 50%;
+  top: 50%;
+  margin-left: -35px;
+  margin-top: -35px;
+  /* 鼠标未触碰图片时隐藏播放按钮 */
+  opacity: 0;
+  /* 2D缩放转换（xy轴）简写：等同于scale(0.7,0.7) */
+  transform: scale(0.7);
+  transition: all 0.5s;
+}
+
+/* 鼠标触碰图片的遮罩效果 */
+.cover-wrap:hover .cover-mask {
+  /* 鼠标触碰图片后的不透明度 */
+  opacity: 0.2;
+}
+
+/* 鼠标触碰图片后的播放效果 */
+.cover-wrap:hover .cover-play {
+  /* 同上 */
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 鼠标触碰图片后的原图片效果 */
+.cover-wrap:hover .cover-img {
+  transform: scale(1.07);
+}
+
+/* 鼠标触碰音乐名字后的颜色变化 */
+.album-title:hover {
+  color: var(--primary-color);
+}
+
+/* 作者名 */
+.album-author {
+  color: #999;
+  line-height: 1.6;
+}
+
+/* 鼠标触碰作者名后的颜色变化 */
+.album-author:hover {
+  color: var(--primary-color);
+}
+
+/* 时间 */
+.album-time {
+  color: #999;
+}
+
+/* 底部的页面选择 */
+.page {
+  /* flex布局 */
+  display: flex;
+  /* 垂直居中（此处可去除） */
+  align-items: center;
+  /* 水平居中 */
+  justify-content: center;
+}
+
+/* 页面选择按钮 */
+.page-item {
+  /* 内联块级元素 */
+  display: inline-block;
+  color: #a2a2a2;
+  line-height: 50px;
+  padding: 0 20px;
+  margin: 10px;
+  font-size: 16px;
+}
+
+/* 
+page-current：当前页
+鼠标触碰not(.page-more)除省略页面按钮外的按钮后的颜色变化效果
+*/
+.page-current,
+.page-item:not(.page-more):hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* 页脚 */
+footer {
+  margin-top: 60px;
+  background: #333;
+  height: 200px;
+}
